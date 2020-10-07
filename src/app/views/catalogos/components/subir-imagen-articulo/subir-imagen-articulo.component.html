@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="mb-1">
+    <input style="visibility: hidden;" type="file" #fileInput ng2FileSelect [uploader]="uploaderArchivo" />
+    <div ng2FileDrop (click)="fileInput.click()" [ngClass]="{'dz-file-over': hasBaseDropZoneOver}" [uploader]="uploaderArchivo"
+      (fileOver)="fileOverBase($event)" class="fileupload-drop-zone-logo-div">
+      <p class="text"><mat-icon aria-hidden="false" aria-label="Example home icon">cloud_upload</mat-icon></p>
+      <p class="text">Arrastra tu archivo o da click sobre la imagen o zona punteada</p>
+
+      <div>
+        <div *ngFor="let item of uploaderArchivo.queue ">
+          <div *ngIf="!item.isSuccess" class="progress" style="margin-bottom: 0;">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+            <mat-progress-bar class="" color="primary" mode="determinate" [value]="item.progress">
+            </mat-progress-bar>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="loadingFile">
+        <div class="wrap-loading-catalog">
+          <mat-spinner [diameter]="40"></mat-spinner>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

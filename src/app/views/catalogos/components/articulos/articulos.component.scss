@@ -1,0 +1,32 @@
+.wrap-buttons{
+  text-align: right;
+  margin-right: 15px;
+}
+
+.wrap-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  .info {
+    p {
+      margin: 0 0 8px;
+    }
+  }
+  .picture {
+    text-align: right;
+    img {
+      vertical-align: bottom;
+      max-width: 80px;
+    }
+  }
+}
+
+mat-card{
+  // height: 180px !important;
+}
+
+@media screen and (max-width:599px) {
+  mat-card{
+    height: initial !important;
+  }
+}

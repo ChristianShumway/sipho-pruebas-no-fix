@@ -1,0 +1,74 @@
+
+<mat-card *ngIf="empleado; else loading">
+  <div class="container-gafete">
+    <div class="wrap-gafete"  #printme id="printme" >
+      <div class="front" #downloadFront>
+        <div class="wrap-logo">
+          <img src="./../../../../../assets/images/logo-panaderia.png" alt="logo">
+        </div>
+        <div class="wrap-image-profile">
+          <a [routerLink] = "['/catalogos/foto-gafete', idEmpleado]" matTooltip="Tomar Foto" matTooltipPosition="above">
+            <img [src]="fotoEmpleado" alt="Image Source">
+          </a>
+        </div>
+        <div class="wrap-data-employe">
+          <h1 class="nombre">{{empleado.nombre}} {{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}}</h1>
+          <p class="puesto">{{empleado.perfil.descripcion}}</p>
+        </div>
+        <div class="wrap-cb">
+          <img [src]="codigoBarras" alt="Image Source">
+          <span>{{empleado.gafete}}</span>
+        </div>
+      </div>
+      <div class="back" #downloadBack>
+        <div class="wrap-codigoqr">
+          <img [src]="codigoQR" alt="Image Source">
+        </div>
+        <div class="wrap-data-employe">
+          <p class="encabezado">Información</p>
+          <div class="data">
+            <p>
+              <mat-icon aria-hidden="false" class="icon">phone</mat-icon>
+              {{empleado.telefono}}
+            </p>
+            <p>
+              <mat-icon aria-hidden="false" class="icon">email</mat-icon>
+              {{empleado.email}}
+            </p>
+            <p>
+              <mat-icon aria-hidden="false" class="icon">home</mat-icon>
+              {{empleado.direccion}}
+            </p>
+            <p>
+              <mat-icon aria-hidden="false" class="icon">local_hospital</mat-icon>
+              {{empleado.nss}}
+            </p>
+          </div>
+        </div>
+        <div class="wrap-logo">
+          <img src="./../../../../../assets/images/logo-panaderia.png" alt="logo">
+        </div>
+      </div>
+    </div>
+    <div class="wrap-btn-descargar">
+      <button (click)="printGafete()"  mat-raised-button color="primary"  >
+        <mat-icon aria-hidden="false" class="icon">save_alt</mat-icon>
+        Descargar
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+<ng-template #loading>
+  <mat-card>
+    <div class="wrap-loading-catalog">
+      <mat-spinner [diameter]="60"></mat-spinner>
+    </div>
+  </mat-card>
+  </ng-template>
+
+
+<div id="download">
+  <!-- <img #canvas> -->
+  <a #downloadLink></a>
+</div>
